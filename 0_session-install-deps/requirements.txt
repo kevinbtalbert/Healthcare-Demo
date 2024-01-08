@@ -1,0 +1,9 @@
+## General Project Requirements
+pandas==2.0.3
+gradio==3.37.0
+transformers==4.31.0
+torch==2.0.1
+accelerate==0.21.0
+
+## OpenAI Requirements
+openai==0.28.0
