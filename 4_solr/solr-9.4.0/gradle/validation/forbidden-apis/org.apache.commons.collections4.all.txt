@@ -1,2 +1,0 @@
-@defaultMessage Use Java Collection methods or Java Streams instead
-org.apache.commons.collections4.**

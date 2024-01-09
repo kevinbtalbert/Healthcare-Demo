@@ -1,1 +1,0 @@
-../../../../core/src/test-files/solr/collection1/conf/stemdict.txt
