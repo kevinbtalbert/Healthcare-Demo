@@ -1,0 +1,95 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.solr.rest.schema;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.apache.solr.client.solrj.request.schema.SchemaRequest;
+import org.apache.solr.rest.SolrRestletTestBase;
+import org.junit.Test;
+
+public class TestFieldCollectionResource extends SolrRestletTestBase {
+  @Test
+  public void testXMLGetAllFields() {
+    assertQ(
+        "/schema/fields?wt=xml",
+        "(/response/arr[@name='fields']/lst/str[@name='name'])[1] = 'HTMLstandardtok'",
+        "(/response/arr[@name='fields']/lst/str[@name='name'])[2] = 'HTMLwhitetok'",
+        "(/response/arr[@name='fields']/lst/str[@name='name'])[3] = '_version_'");
+  }
+
+  @Test
+  public void testGetAllFields() throws Exception {
+    assertJQ(
+        "/schema/fields",
+        "/fields/[0]/name=='HTMLstandardtok'",
+        "/fields/[1]/name=='HTMLwhitetok'",
+        "/fields/[2]/name=='_version_'");
+  }
+
+  @Test
+  public void testXMLGetThreeFieldsDontIncludeDynamic() {
+    //
+    assertQ(
+        "/schema/fields?wt=xml&fl=id,_version_,price_i",
+        "count(/response/arr[@name='fields']/lst/str[@name='name']) = 2",
+        "(/response/arr[@name='fields']/lst/str[@name='name'])[1] = 'id'",
+        "(/response/arr[@name='fields']/lst/str[@name='name'])[2] = '_version_'");
+  }
+
+  @Test
+  public void testXMLGetThreeFieldsIncludeDynamic() {
+    assertQ(
+        "/schema/fields?wt=xml&fl=id,_version_,price_i&includeDynamic=on",
+        "count(/response/arr[@name='fields']/lst/str[@name='name']) = 3",
+        "(/response/arr[@name='fields']/lst/str[@name='name'])[1] = 'id'",
+        "(/response/arr[@name='fields']/lst/str[@name='name'])[2] = '_version_'",
+        "(/response/arr[@name='fields']/lst/str[@name='name'])[3] = 'price_i'",
+        "/response/arr[@name='fields']/lst[    str[@name='name']='price_i'    "
+            + "                                  and str[@name='dynamicBase']='*_i']");
+  }
+
+  @Test
+  public void testXMLNotFoundFields() {
+    assertQ(
+        "/schema/fields?&wt=xml&fl=not_in_there,this_one_either",
+        "count(/response/arr[@name='fields']) = 1",
+        "count(/response/arr[@name='fields']/lst/str[@name='name']) = 0");
+  }
+
+  @Test
+  public void testGetAllFieldsIncludeDynamic() throws Exception {
+    List<Map<String, Object>> fields =
+        new SchemaRequest.Fields(params("includeDynamic", "true"))
+            .process(getSolrClient())
+            .getFields();
+
+    Set<String> lookingForNames =
+        asSet(
+            "HTMLstandardtok",
+            "HTMLwhitetok",
+            "_version_", // static
+            "*_d",
+            "*_f",
+            "*_b",
+            "*_t",
+            "*_l"); // dynamic
+    fields.stream().map(f -> f.get("name")).forEach(lookingForNames::remove);
+    assertTrue(lookingForNames.toString(), lookingForNames.isEmpty());
+  }
+}

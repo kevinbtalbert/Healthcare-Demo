@@ -1,0 +1,147 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'java-library'
+
+description = 'Solr Server'
+
+// No java classes from this module
+jar.enabled(false)
+javadoc.enabled(false)
+compileJava.enabled(false)
+
+configurations {
+  libExt
+  serverLib
+  solrCore
+  runtimeClasspath {
+    extendsFrom serverLib, libExt, solrCore
+  }
+  startJar
+  webapp
+  packaging
+}
+
+dependencies {
+  serverLib 'org.eclipse.jetty:jetty-deploy'
+  serverLib 'org.eclipse.jetty:jetty-http'
+  serverLib 'org.eclipse.jetty:jetty-io'
+  serverLib 'org.eclipse.jetty:jetty-jmx'
+  serverLib 'org.eclipse.jetty:jetty-rewrite'
+  serverLib 'org.eclipse.jetty:jetty-security'
+  serverLib 'org.eclipse.jetty:jetty-server'
+  serverLib 'org.eclipse.jetty:jetty-servlet'
+  serverLib 'org.eclipse.jetty:jetty-servlets'
+  serverLib 'org.eclipse.jetty:jetty-util'
+  serverLib 'org.eclipse.jetty:jetty-webapp'
+  serverLib 'org.eclipse.jetty:jetty-xml'
+  serverLib 'org.eclipse.jetty:jetty-alpn-server'
+  serverLib('org.eclipse.jetty:jetty-alpn-java-server', {
+    exclude group: "org.eclipse.jetty.alpn", module: "alpn-api"
+  })
+
+  serverLib 'org.eclipse.jetty.http2:http2-server'
+  serverLib 'org.eclipse.jetty.http2:http2-common'
+  serverLib 'org.eclipse.jetty.http2:http2-hpack'
+
+  serverLib 'org.eclipse.jetty.toolchain:jetty-servlet-api'
+
+  libExt 'com.lmax:disruptor'
+  libExt 'org.slf4j:jcl-over-slf4j'
+  libExt 'org.slf4j:jul-to-slf4j'
+  libExt 'org.slf4j:slf4j-api'
+  libExt 'org.apache.logging.log4j:log4j-1.2-api'
+  libExt 'org.apache.logging.log4j:log4j-api'
+  libExt 'org.apache.logging.log4j:log4j-core'
+  libExt 'org.apache.logging.log4j:log4j-jul'
+  libExt 'org.apache.logging.log4j:log4j-layout-template-json'
+  libExt 'org.apache.logging.log4j:log4j-slf4j2-impl'
+  libExt 'org.apache.logging.log4j:log4j-web'
+
+  libExt('io.dropwizard.metrics:metrics-core', {
+    exclude group: "com.rabbitmq", module: "amqp-client"
+  })
+  libExt('io.dropwizard.metrics:metrics-graphite', {
+    exclude group: "com.rabbitmq", module: "amqp-client"
+  })
+  libExt('io.dropwizard.metrics:metrics-jetty10', {
+    exclude group: "org.eclipse.jetty", module: "*"
+    exclude group: "org.eclipse.jetty.http2", module: "*"
+    exclude group: "org.eclipse.jetty.toolchain", module: "*"
+  })
+  libExt 'io.dropwizard.metrics:metrics-jvm'
+  libExt 'io.dropwizard.metrics:metrics-jmx'
+
+  webapp project(path: ":solr:webapp", configuration: "war")
+
+  startJar('org.eclipse.jetty:jetty-start::shaded', {
+    transitive false
+  })
+
+  solrCore project(":solr:core")
+}
+
+// Add the following non-standard configurations to JAR validation.
+afterEvaluate {
+  configurations {
+    jarValidation.extendsFrom startJar
+  }
+}
+
+ext {
+  packagingDir = file("${buildDir}/packaging")
+}
+
+task assemblePackaging(type: Sync) {
+  from(projectDir, {
+    include "contexts/**"
+    include "etc/**"
+    include "modules/**"
+    include "resources/**"
+    include "scripts/**"
+    include "solr/**"
+    include "README.md"
+  })
+
+  // Add in the intersection of serverLib and solrCore
+  from(configurations.libExt + (configurations.serverLib - (configurations.serverLib - configurations.solrCore)), {
+    into "lib/ext"
+  })
+
+  from(configurations.serverLib - configurations.libExt - configurations.solrCore, {
+    into "lib/"
+  })
+
+  from { project.configurations.startJar.singleFile } {
+    rename { file -> 'start.jar' }
+  }
+
+  dependsOn configurations.webapp
+  from( { zipTree(configurations.webapp.asPath) }, {
+    into "solr-webapp/webapp"
+  })
+
+  into packagingDir
+}
+
+artifacts {
+  packaging packagingDir, {
+    builtBy assemblePackaging
+  }
+}
+
+assemble.dependsOn assemblePackaging
