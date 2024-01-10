@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<schema name="example" version="1.6">
+  <fields>
+    <!-- DO NOT MODIFY the _version_ or _root_ since they are required by Solr -->
+    <field name="_version_" type="long" indexed="true" stored="true"/>
+    <field name="_root_" type="string" indexed="true" stored="true"/>
+    <!-- Unique ID for document. All docs must use this. It could be the data location -->
+    <field name="id" type="string" indexed="true" stored="true" required="true"/>
+    <!-- Location for document -->
+    <field name="doc_uri" type="string" indexed="true" stored="true" required="false"/>
+    <field name="content" type="text_general" indexed="true" stored="true" required="false"/>
+    <!-- Different vector fields for testing. Later we can set stored="false" -->
+    <field name="vector_c" type="knn_vector_cos" indexed="true" stored="true"/>
+    <field name="vector_d" type="knn_vector_dot" indexed="true" stored="true"/>
+    <field name="vector_e" type="knn_vector_euc" indexed="true" stored="true"/>
+    <field name="vector_test4" type="knn_vector_test4" indexed="true" stored="true"/>
+  </fields>
+  <uniqueKey>id</uniqueKey>
+  <types>
+    <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+    <fieldType name="int" class="solr.IntPointField" docValues="true"/>
+    <fieldType name="long" class="solr.LongPointField" docValues="true"/>
+    <fieldtype name="ignored" stored="true" indexed="false" class="solr.StrField"/>
+    <fieldType name="knn_vector_cos" class="solr.DenseVectorField" vectorDimension="384" similarityFunction="cosine"/>
+    <fieldType name="knn_vector_dot" class="solr.DenseVectorField" vectorDimension="384" similarityFunction="dot_product"/>
+    <fieldType name="knn_vector_euc" class="solr.DenseVectorField" vectorDimension="384" similarityFunction="euclidean"/>
+    <!-- TESTING FIELD - Hello World -->
+    <fieldType name="knn_vector_test4" class="solr.DenseVectorField" vectorDimension="4" similarityFunction="cosine"/>
+    <!-- Literal string -->
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
+    <!-- Basic tokenized text, searchable case-insensitive -->
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer name="standard"/>
+        <filter name="flattenGraph"/>
+        <filter name="lowercase"/>
+      </analyzer>
+    </fieldType>
+  </types>
+</schema>

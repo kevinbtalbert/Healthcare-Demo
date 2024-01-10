@@ -23,10 +23,18 @@ tasks:
     cpu: 2
     memory: 12
 
+  - type: run_session
+    name: Download/Install Solr
+    script: solr/01_install-java11_n_solr.py
+    short_summary: Install Java 11
+    kernel: python3
+    cpu: 2
+    memory: 4
+
   - type: start_application
     name: Solr
     subdomain: solr-app
-    script: 4_solr/launch-solr.py
+    script: solr/02_start-solr-application.py
     short_summary: Create and start Solr / Banana
     long_summary: Create and start frontend application. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 2
