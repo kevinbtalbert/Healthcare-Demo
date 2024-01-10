@@ -24,9 +24,20 @@ tasks:
     memory: 12
 
   - type: start_application
+    name: Solr
+    subdomain: solr-app
+    script: 4_solr/launch-solr.py
+    short_summary: Create and start Solr / Banana
+    long_summary: Create and start frontend application. Remember to enable unauthenticated app access for external access to the UI.
+    cpu: 2
+    memory: 4
+    environment_variables:
+      TASK_TYPE: START_APPLICATION
+
+  - type: start_application
     name: HIMSS Interface
     subdomain: himss-interface-1
-    script: 4_app/frontend_app.py
+    script: 3_apps/frontend_app.py
     short_summary: Create and start frontend application
     long_summary: Create and start frontend application. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 2
