@@ -2,7 +2,7 @@
 
 import subprocess
 
-print(subprocess.run(["bash ~/solr/scripts/stop-solr.sh"], cwd="solr", shell=True))
+print(subprocess.run(["bash /home/cdsw/solr/scripts/stop-solr.sh"], cwd="solr", shell=True))
 
 print("Stop solr command is finished.")
   

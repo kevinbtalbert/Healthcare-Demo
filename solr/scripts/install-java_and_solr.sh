@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-source $(dirname $(readlink -f $0))/set_solr_env.sh
+source /home/cdsw/solr/scripts/set_solr_env.sh
 
 JAVA_TGZ=openjdk-${JAVA_VER}_linux-x64_bin.tar.gz
 JAVA_DL_URL="https://download.java.net/java/GA/jdk11/13/GPL/${JAVA_TGZ}"
