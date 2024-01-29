@@ -45,7 +45,7 @@ tasks:
   - type: start_application
     name: Physician Portal
     subdomain: physician-portal
-    script: 3_apps/frontend_app.py
+    script: 3_apps/physician_portal.py
     short_summary: Create and start frontend application
     long_summary: Create and start frontend application. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 2
