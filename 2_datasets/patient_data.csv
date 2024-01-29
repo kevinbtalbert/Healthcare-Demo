@@ -1,0 +1,21 @@
+patient_id,name,date_of_birth,gender,medical_conditions,medications,allergies,last_appointment_date,height(cm),weight(kg),doctor_name,initial_prognosis,blood_type,emergency_contact,insurance_provider,policy_number
+P-1000,Scott Webb,1955-06-03,Female,Hypertension,Hydrochlorothiazide,Penicillin,2023-01-06,160,64,Dr. Chris Taub,Continue prescribed treatment,A-,David Johnson,UnitedHealthcare,Policy 96222
+P-1001,Rachel Frederick,1963-05-18,Male,Hypothyroidism,Levothyroxine,Peanuts,2021-07-08,191,99,Dr. Eric Foreman,Adjust medication dosage,O+,William Taylor,Kaiser Permanente,Policy 19121
+P-1002,Eric Kline,1986-07-16,Male,Myocardial Infarction,Clopidogrel,Wheat,2021-05-14,191,76,Dr. Jeffrey Cole,Stable with current medication,O+,Richard Robinson,CareSource,Policy 27112
+P-1003,James Rodriguez,1977-02-15,Female,Chronic Obstructive Pulmonary Disease,Tiotropium,Dust mites,2021-10-27,159,59,Dr. Allison Cameron,Continue prescribed treatment,AB-,Mary Smith,Centene Corporation,Policy 82082
+P-1004,David Scott,1954-06-07,Female,Hypertension,Hydrochlorothiazide,Eggs,2022-01-23,171,86,Dr. Martha Masters,Requires further tests,A+,Susan Williams,BlueCross BlueShield,Policy 45589
+P-1005,Dawn Roach,1973-03-10,Female,Chronic Obstructive Pulmonary Disease,Tiotropium,Milk,2021-07-05,187,90,Dr. Gregory House,Patient shows signs of improvement,AB+,Thomas Martinez,Centene Corporation,Policy 84963
+P-1006,Mary Harris,1948-09-01,Male,Asthma,Albuterol,Milk,2023-03-06,185,100,Dr. Lawrence Kutner,Refer to specialist,A+,Jane Johnson,Aetna,Policy 86599
+P-1007,Sandy Brown,1973-10-13,Female,Bipolar Disorder,Lithium,Fish,2021-04-18,171,76,Dr. James Wilson,Refer to specialist,O-,Barbara Davis,Centene Corporation,Policy 44270
+P-1008,Kenneth Johnson,2000-11-26,Female,Osteoporosis,Alendronate,NSAIDs,2023-05-05,167,99,Dr. Eric Foreman,Stable with current medication,B+,Patricia Wilson,Aetna,Policy 59956
+P-1009,Nicole Henderson,1991-11-25,Male,Schizophrenia,Clozapine,Wheat,2021-05-20,170,78,Dr. Chris Taub,Refer to specialist,AB-,Karen Anderson,Kaiser Permanente,Policy 12856
+P-1010,Brooke Nolan,2006-12-09,Male,Chronic Kidney Disease,Calcitriol,Pollen,2022-07-25,175,54,Dr. Chris Taub,Monitor and review in 3 months,AB+,Richard Martin,BlueCross BlueShield,Policy 32671
+P-1011,Kristen Weaver,2006-02-06,Female,Asthma,Fluticasone,Pet dander,2023-08-25,174,56,Dr. Amber Volakis,Requires further tests,AB-,Sarah Williams,BlueCross BlueShield,Policy 90054
+P-1012,Brian Brown,2002-06-10,Male,Stroke,Atorvastatin,Shellfish,2021-09-29,178,66,Dr. Lisa Cuddy,Monitor and review in 3 months,B-,John Smith,Humana,Policy 57585
+P-1013,Reginald Perez,1955-08-11,Male,Chronic Kidney Disease,Erythropoietin,Mold,2023-01-21,189,61,Dr. Lisa Cuddy,Monitor and review in 3 months,A+,Michael White,CareSource,Policy 96410
+P-1014,Laura Lopez,1922-02-16,Female,Chronic Kidney Disease,Calcitriol,Pollen,2022-12-02,193,57,Dr. Allison Cameron,Requires further tests,O+,William Thomas,Anthem,Policy 12641
+P-1015,Ashley Rodriguez,1966-11-09,Male,Bipolar Disorder,Lithium,Wheat,2022-01-04,153,83,Dr. James Wilson,Continue prescribed treatment,AB+,Mary Martinez,Anthem,Policy 28473
+P-1016,Heather French,1925-09-28,Male,Diabetes Type 2,Metformin,Shellfish,2021-10-25,198,54,Dr. Amber Volakis,Monitor and review in 3 months,O+,Patricia Brown,Kaiser Permanente,Policy 26341
+P-1017,Stephen Maddox,2004-05-21,Female,Diabetes Type 2,Metformin,Pollen,2023-06-11,161,80,Dr. Martha Masters,Schedule follow-up for evaluation,AB+,Lisa Davis,BlueCross BlueShield,Policy 46281
+P-1018,Brian Blanchard,1973-12-03,Male,Diabetes Type 2,Metformin,Latex,2021-05-14,195,89,Dr. Amber Volakis,Continue prescribed treatment,B+,Richard Jones,Aetna,Policy 79587
+P-1019,Glenda Williams,1997-04-15,Male,Diabetes Type 2,Metformin,Pollen,2021-04-30,151,99,Dr. Jessica Adams,Requires further tests,AB-,Thomas Martin,Humana,Policy 83762

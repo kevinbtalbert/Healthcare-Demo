@@ -1,7 +1,7 @@
-name: LLM Hands on Lab with CML
-description: "Hands on Lab which demonstrates a number of concepts including web scraping, vector databases, model deployment, model usage, Langchain, application building, and instruction following/tuning."
+name: Healthcare Demo
+description: "Healthcare demo showcasing Nifi, CML, Solr, and Generative AI functionalities."
 author: "Cloudera"
-date: "2023-12-20"
+date: "2024-1-29"
 specification_version: 1.0
 prototype_version: 1.0
 environment_variables:
@@ -24,7 +24,7 @@ tasks:
     memory: 12
 
   - type: run_session
-    name: Download/Install Solr
+    name: Download/Install Solr and Load Bananna UI
     script: solr/01_install-java11_n_solr.py
     short_summary: Install Java 11
     kernel: python3
@@ -36,15 +36,15 @@ tasks:
     subdomain: solr-app
     script: solr/02_start-solr-application.py
     short_summary: Create and start Solr / Banana
-    long_summary: Create and start frontend application. Remember to enable unauthenticated app access for external access to the UI.
+    long_summary: Create and start frontend application. Append /solr/banana/src/index.html#/dashboard to root URL to access Banana UI. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 2
     memory: 4
     environment_variables:
       TASK_TYPE: START_APPLICATION
 
   - type: start_application
-    name: HIMSS Interface
-    subdomain: himss-interface-1
+    name: Physician Portal
+    subdomain: physician-portal
     script: 3_apps/frontend_app.py
     short_summary: Create and start frontend application
     long_summary: Create and start frontend application. Remember to enable unauthenticated app access for external access to the UI.

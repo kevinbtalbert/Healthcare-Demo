@@ -29,3 +29,6 @@ cd server
 cd solr-webapp
 cd webapp
 git clone ${BANANA_GIT}
+
+## Setup Banana Dashboard
+cp /home/cdsw/4_solr/chronic-symptoms-solr-dashboard.json /home/cdsw/solr-app/solr-9.3.0/server/solr-webapp/webapp/banana/src/app/dashboards/default.json
