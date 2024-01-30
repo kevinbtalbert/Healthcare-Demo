@@ -10,3 +10,4 @@ openai==0.28.0
 
 ## HL7 Requirements
 hl7apy==1.3.4
+Faker==22.6.0
