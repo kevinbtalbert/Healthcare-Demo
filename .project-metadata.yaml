@@ -66,16 +66,16 @@ tasks:
     script: 4_solr/generate-hl7-data.py
     short_summary: Generate HL7 Data for processing in Solr
     kernel: python3
-    cpu: 2
-    memory: 4
+    cpu: 1
+    memory: 2
 
   - type: run_session
     name: Push HL7 Data to Solr Collection
     script: 4_solr/push-hl7-to-solr.py
     short_summary: Push/commit HL7 data to Solr collection
     kernel: python3
-    cpu: 2
-    memory: 4
+    cpu: 1
+    memory: 2
   
   - type: run_session
     name: Add stopwords to Solr
