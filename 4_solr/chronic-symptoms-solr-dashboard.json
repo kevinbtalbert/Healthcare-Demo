@@ -38,20 +38,10 @@
           "active": true,
           "alias": "",
           "id": 0
-        },
-        "1": {
-          "type": "terms",
-          "field": "patient_s",
-          "value": "cunningham%20beatrice",
-          "mandate": "must",
-          "active": true,
-          "alias": "",
-          "id": 1
         }
       },
       "ids": [
-        0,
-        1
+        0
       ]
     }
   },
@@ -121,8 +111,8 @@
             "ids": [
               0
             ],
-            "query": "q=*%3A*&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&fq=patient_s:\"cunningham%20beatrice\"&facet=true&facet.field=patient_s&wt=json",
-            "basic_query": "q=*%3A*&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&fq=patient_s:\"cunningham%20beatrice\"&facet=true&facet.field=patient_s",
+            "query": "q=*%3A*&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&facet=true&facet.field=patient_s&wt=json",
+            "basic_query": "q=*%3A*&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&facet=true&facet.field=patient_s",
             "custom": ""
           },
           "group": "default",
@@ -163,7 +153,7 @@
             "ids": [
               0
             ],
-            "query": "q=*%3A*&wt=json&rows=0&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&fq=patient_s:\"cunningham%20beatrice\"&facet=true&facet.field=note_txt&facet.limit=10",
+            "query": "q=*%3A*&wt=json&rows=0&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&facet=true&facet.field=note_txt&facet.limit=10",
             "custom": ""
           },
           "field": "note_txt",
@@ -194,7 +184,7 @@
             "ids": [
               0
             ],
-            "query": "q=*%3A*&wt=json&rows=0&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&fq=patient_s:\"cunningham%20beatrice\"&facet=true&facet.range=visit_date_dt&facet.range.start=NOW/YEAR-5YEAR&facet.range.end=NOW/YEAR%2B1YEAR&facet.range.gap=%2B7DAY\n",
+            "query": "q=*%3A*&wt=json&rows=0&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&facet=true&facet.range=visit_date_dt&facet.range.start=NOW/YEAR-5YEAR&facet.range.end=NOW/YEAR%2B1YEAR&facet.range.gap=%2B7DAY\n",
             "custom": ""
           },
           "max_rows": 100000,
@@ -261,8 +251,8 @@
             "ids": [
               0
             ],
-            "query": "q=*%3A*&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&fq=patient_s:\"cunningham%20beatrice\"&sort=visit_date_dt desc&wt=json&rows=1000",
-            "basic_query": "q=*%3A*&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&fq=patient_s:\"cunningham%20beatrice\"&sort=visit_date_dt desc",
+            "query": "q=*%3A*&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&sort=visit_date_dt desc&wt=json&rows=1000",
+            "basic_query": "q=*%3A*&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&sort=visit_date_dt desc",
             "custom": ""
           },
           "size": 20,
@@ -337,7 +327,7 @@
   },
   "solr": {
     "server": "/solr/",
-    "core_name": "hl7_messages",
+    "core_name": "hl7_messages_shard1_replica_n1",
     "core_list": [
       "hl7_messages_shard1_replica1"
     ],

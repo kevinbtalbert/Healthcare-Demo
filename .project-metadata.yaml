@@ -52,3 +52,35 @@ tasks:
     memory: 4
     environment_variables:
       TASK_TYPE: START_APPLICATION
+
+  - type: run_session
+    name: Create HL7 Data Collection
+    script: 4_solr/create-collection.py
+    short_summary: Create HL7 collection in Solr
+    kernel: python3
+    cpu: 1
+    memory: 2
+
+  - type: run_session
+    name: Generate HL7 Data
+    script: 4_solr/generate-hl7-data.py
+    short_summary: Generate HL7 Data for processing in Solr
+    kernel: python3
+    cpu: 2
+    memory: 4
+
+  - type: run_session
+    name: Push HL7 Data to Solr Collection
+    script: 4_solr/push-hl7-to-solr.py
+    short_summary: Push/commit HL7 data to Solr collection
+    kernel: python3
+    cpu: 2
+    memory: 4
+  
+  - type: run_session
+    name: Add stopwords to Solr
+    script: 4_solr/add-stopwords.py
+    short_summary: Add stopwords to Solr collection
+    kernel: python3
+    cpu: 1
+    memory: 2
