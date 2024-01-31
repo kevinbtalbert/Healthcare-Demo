@@ -4,11 +4,11 @@ import os
 import json
 
 client = cmlapi.default_client(url=os.getenv("CDSW_API_URL").replace("/api/v1", ""), cml_api_key=os.getenv("CDSW_APIV2_KEY"))
-if os.getenv("PROJECT_NAME") == "Healthcare Demo":
+if os.getenv("DEMO_PROJECT_NAME") == "Healthcare Demo":
     projects = client.list_projects(search_filter=json.dumps({"name": "Healthcare Demo"}))
 else:
-    projects = client.list_projects(search_filter=json.dumps({"name": os.getenv("PROJECT_NAME")}))
-    
+    projects = client.list_projects(search_filter=json.dumps({"name": os.getenv("DEMO_PROJECT_NAME")}))
+
 project = projects.projects[0]
 
 applications = client.list_applications(project_id=project.id, search_filter=json.dumps({"subdomain": "solr-app-"}))
