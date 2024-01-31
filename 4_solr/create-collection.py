@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 def create_solr_collection(solr_endpoint, collection_name):
     url = f"{solr_endpoint}/admin/collections?action=CREATE&name={collection_name}&numShards=1&replicationFactor=1&wt=xml"
@@ -20,9 +21,8 @@ def create_solr_collection(solr_endpoint, collection_name):
         raise Exception(f"Failed to query Solr collection. Status code: {response.status_code}")
 
 
-
 # Solr endpoint and collection name
-solr_endpoint = "https://solr-app-lpq1ai.ml-b74f8940-b97.go01-dem.ylcu-atmi.cloudera.site/solr"  # Replace with your Solr server URL
+solr_endpoint = os.getenv('SOLR_SERVER_URL')  # Replace with your Solr server URL
 collection_name = "hl7_messages"  # Replace with your collection name
 
 # Query the collection for patient names

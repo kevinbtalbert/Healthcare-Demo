@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 def query_solr_collection_for_patient_names(solr_endpoint, collection_name):
     url = f"{solr_endpoint}/{collection_name}/select"
@@ -19,7 +20,7 @@ def query_solr_collection_for_patient_names(solr_endpoint, collection_name):
 
 
 # Solr endpoint and collection name
-solr_endpoint = "https://solr-app-lpq1ai.ml-b74f8940-b97.go01-dem.ylcu-atmi.cloudera.site/solr"  # Replace with your Solr server URL
+solr_endpoint = os.getenv('SOLR_SERVER_URL')
 collection_name = "hl7_messages"  # Replace with your collection name
 
 # Query the collection for patient names

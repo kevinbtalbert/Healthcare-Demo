@@ -4,6 +4,7 @@ import re
 import json
 import csv
 import random
+import os
 
 def generate_past_date(days=30):
     """ Generate a random date within the past 'days' days """
@@ -100,8 +101,8 @@ def commit_to_solr(solr_endpoint, collection_name):
         print(f"Failed to commit to Solr. Status code: {response.status_code}, Response: {response.text}")
 
 # Read HL7 messages from CSV
-csv_file_path = "HL7_Messages.csv"
-solr_endpoint = "https://solr-app-lpq1ai.ml-b74f8940-b97.go01-dem.ylcu-atmi.cloudera.site/solr/"
+csv_file_path = "/home/cdsw/4_solr/HL7_Messages.csv"
+solr_endpoint = os.getenv('SOLR_SERVER_URL')
 collection_name = "hl7_messages"
 
 with open(csv_file_path, mode='r', newline='') as file:

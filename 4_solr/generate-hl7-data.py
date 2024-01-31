@@ -68,7 +68,7 @@ def generate_hl7_message(message_id):
 sample_messages = [generate_hl7_message(i) for i in range(1, 51)]
 
 # Export to CSV
-csv_file = "HL7_Messages.csv"
+csv_file = "/home/cdsw/4_solr/HL7_Messages.csv"
 with open(csv_file, mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['MSH', 'EVN', 'PID', 'PV1', 'DG1'])  # Header
