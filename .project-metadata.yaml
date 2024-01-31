@@ -55,3 +55,15 @@ tasks:
     memory: 4
     environment_variables:
       TASK_TYPE: START_APPLICATION
+
+  - type: create_job
+    name: Execute Solr Scripts
+    entity_label: execute-solr-scripts
+    script: 4_solr/execute-solr-scripts.py
+    arguments: None
+    short_summary: Job to create Solr collection, add data, and setup stopwords. IMPORTANT! Only run after setting up unauthenticated app access.
+    long_summary: Job to create Solr collection, add data, and setup stopwords. IMPORTANT! Only run after setting up unauthenticated app access.
+    cpu: 2
+    memory: 4
+    environment:
+      TASK_TYPE: CREATE/RUN_JOB
