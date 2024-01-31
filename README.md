@@ -6,6 +6,9 @@
 
 Begin by launching AMP in CML to deploy CML related components and spin up components 3 and 4 of Demo. Download the Nifi template from step 1 and deploy in CDF/Nifi. Setup the elements of step 2 to spec below in CDW/Data Viz.
 
+## Talk Track / Slides for AEs/SEs
+[PDF Asset](/assets/DEMO%20-%20Healthcare.pdf)
+[PowerPoint Asset](/assets/DEMO%20-%20Healthcare.pptx)
 
 ### 1. Ingest/Process HL7 Data Using Nifi/CDF
 
