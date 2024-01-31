@@ -8,7 +8,7 @@ environment_variables:
   OPENAI_KEY:
     default: ""
     description: "Access key ID for interacting with OpenAI"
-  PROJECT_NAME:
+  DEMO_PROJECT_NAME:
     default: "Healthcare Demo"
     description: "Project Name: It is crucial that this variable match the title you are calling the AMP. This is how the CML API will locate the Solr instance this AMP creates."
 
@@ -57,9 +57,9 @@ tasks:
       TASK_TYPE: START_APPLICATION
 
   - type: run_session
-    name: Execute Solr Setup Scripts - Create collection, generate data, add data, add stopwords, make dashboard
+    name: Execute Solr Setup Scripts
     script: 4_solr/execute-solr-scripts.py
-    short_summary: Create HL7 collection in Solr
+    short_summary: Execute Solr Setup Scripts - Create collection, generate data, add data, add stopwords, make dashboard
     kernel: python3
     cpu: 2
     memory: 4
