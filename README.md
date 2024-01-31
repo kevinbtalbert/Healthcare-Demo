@@ -3,6 +3,8 @@
 
 :wave:
 
+![](/assets/amp-cover.png)
+
 Begin by launching AMP in CML to deploy CML related components and spin up components 3 and 4 of Demo. Download the Nifi template from step 1 and deploy in CDF/Nifi. Setup the elements of step 2 to spec below in CDW/Data Viz.
 
 
