@@ -3,8 +3,8 @@ import json
 import os
 
 def create_solr_collection(solr_endpoint, collection_name):
-    url = f"{solr_endpoint}/admin/collections?action=CREATE&name={collection_name}&numShards=1&replicationFactor=1&wt=xml"
-
+    url = f"{solr_endpoint}admin/collections?action=CREATE&name={collection_name}&numShards=1&replicationFactor=1&wt=xml"
+    print(url)
     response = requests.get(url)
 
     if response.status_code == 200:

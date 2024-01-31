@@ -31,7 +31,7 @@ Visited
 was"
 
 # Append text to the first file
-echo "$text_to_append" >> "./solr-app/solr-9.3.0/server/solr/configsets/_default/conf/stopwords.txt"
+echo "$text_to_append" >> "/home/cdsw/solr-app/solr-9.3.0/server/solr/configsets/_default/conf/stopwords.txt"
 
 # Append text to the second file
-echo "$text_to_append" >> "./solr-app/solr-9.3.0/server/solr-webapp/webapp/banana/resources/banana-int-solr-4.4/banana-int/conf/stopwords.txt"
+echo "$text_to_append" >> "/home/cdsw/solr-app/solr-9.3.0/server/solr-webapp/webapp/banana/resources/banana-int-solr-4.4/banana-int/conf/stopwords.txt"
