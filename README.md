@@ -30,3 +30,13 @@ Give any of the existing Collection Name of SOLR, in Collection area as shown in
 Click on Create button in green. It will load the Optimzer collection data in Banana UI as shown below
 
 ### 4. Generative AI for Patient Advising by Physician
+
+
+## Final AMP Setup (Manual)
+
+1. Setup Solr app instance for unauthenticated app access
+
+2. Execute Solr Setup Scripts (can be done in session) - Create collection, generate data, add data, add stopwords, make dashboard
+    Run script: 4_solr/execute-solr-scripts.py
+
+3. Navigate to https://[CML APPLICATION]/solr/banana/src/index.html#/dashboard to view Banana UI

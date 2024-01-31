@@ -55,11 +55,3 @@ tasks:
     memory: 4
     environment_variables:
       TASK_TYPE: START_APPLICATION
-
-  - type: run_session
-    name: Execute Solr Setup Scripts
-    script: 4_solr/execute-solr-scripts.py
-    short_summary: Execute Solr Setup Scripts - Create collection, generate data, add data, add stopwords, make dashboard
-    kernel: python3
-    cpu: 2
-    memory: 4
