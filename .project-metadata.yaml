@@ -8,6 +8,9 @@ environment_variables:
   OPENAI_KEY:
     default: ""
     description: "Access key ID for interacting with OpenAI"
+  PROJECT_NAME:
+    default: "Healthcare Demo"
+    description: "Project Name: It is crucial that this variable match the title you are calling the AMP. This is how the CML API will locate the Solr instance this AMP creates."
 
 runtimes: 
   - editor: JupyterLab
