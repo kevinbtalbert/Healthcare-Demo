@@ -69,7 +69,7 @@
             "3y",
             "5y"
           ],
-          "timespan": "5y",
+          "timespan": "30d",
           "timefield": "visit_date_dt",
           "timeformat": "",
           "refresh": {
@@ -153,10 +153,10 @@
             "ids": [
               0
             ],
-            "query": "q=*%3A*&wt=json&rows=0&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&facet=true&facet.field=note_txt&facet.limit=10",
+            "query": "q=*%3A*&wt=json&rows=0&fq=visit_date_dt:[NOW/YEAR-5YEAR%20TO%20NOW/YEAR%2B1YEAR]&facet=true&facet.field=condition&facet.limit=10",
             "custom": ""
           },
-          "field": "note_txt",
+          "field": "condition",
           "size": 10,
           "alignment": "horizontal",
           "fontScale": 2,
