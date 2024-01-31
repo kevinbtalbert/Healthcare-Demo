@@ -45,10 +45,12 @@ Open the Physician Portal in the CML Application to access and interface with th
 
 1. Setup Solr app instance for unauthenticated app access (IMPORTANT! Must do before next step!)
 
+![](/assets/unauthenticated-access.png)
+
 2. Execute Solr Setup Scripts (can be done in session or by the created Job) - Create collection, generate data, add data, add stopwords, make dashboard
 
     If in session, run script: `4_solr/execute-solr-scripts.py`
-    
+
     If by job, run `Execute Solr Scripts` job that was created during AMP setup (preferred)
 
 3. Navigate to `https://[CML APPLICATION]/solr/banana/src/index.html#/dashboard` to view Banana UI
