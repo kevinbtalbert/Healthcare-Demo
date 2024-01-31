@@ -25,10 +25,11 @@ elif building_url.startswith('http://'):
     # Add the subdomain after 'http://'
     building_url = 'http://' + solr_application.subdomain + "." + building_url[7:] + "/solr/"
     
-    
+print(building_url)
+
 os.environ['SOLR_SERVER_URL'] = building_url
 
-subprocess.run("python /home/cdsw/4_solr/create_collection.py", shell=True)
+subprocess.run("python /home/cdsw/4_solr/create-collection.py", shell=True)
 subprocess.run("python /home/cdsw/4_solr/generate-hl7-data.py", shell=True)
 subprocess.run("python /home/cdsw/4_solr/push-hl7-to-solr.py", shell=True)
 subprocess.run(["sh /home/cdsw/4_solr/add-stopwords.sh"], shell=True)
