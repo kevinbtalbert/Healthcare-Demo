@@ -1,7 +1,6 @@
-# Healthcare Demo 2024
+# Healthcare Demo 2024 :wave:
 **Demonstration of HL7 Ingest, Extraction, LLMs, and HL7 Dashboarding with Solr for Healthcare Providers using Cloudera DataFlow, Solr, and Machine Learning**
 
-:wave:
 
 ![](/assets/amp-cover.png)
 
